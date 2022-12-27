@@ -28,6 +28,7 @@ namespace AuthenticationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<IUserRepository, UserRepository>();
 
             var mappingConfig = new MapperConfiguration(v =>
                 v.AddProfile(new MappingProfile())

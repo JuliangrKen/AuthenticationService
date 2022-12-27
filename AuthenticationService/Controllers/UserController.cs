@@ -10,11 +10,13 @@ namespace AuthenticationService.Controllers
     {
         private readonly ILogger logger;
         private readonly IMapper mapper;
+        private readonly IUserRepository userRepository;
 
-        public UserController(ILogger logger, IMapper mapper)
+        public UserController(ILogger logger, IMapper mapper, IUserRepository userRepository)
         {
             this.logger = logger;
             this.mapper = mapper;
+            this.userRepository = userRepository;
 
             logger.WriteEvent("Event");
             logger.WriteError("Error");
