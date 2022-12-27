@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace AuthenticationService.Controllers
@@ -7,11 +8,13 @@ namespace AuthenticationService.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private ILogger logger;
+        private readonly ILogger logger;
+        private readonly IMapper mapper;
 
-        public UserController(ILogger logger)
+        public UserController(ILogger logger, IMapper mapper)
         {
             this.logger = logger;
+            this.mapper = mapper;
 
             logger.WriteEvent("Event");
             logger.WriteError("Error");
@@ -45,7 +48,9 @@ namespace AuthenticationService.Controllers
                 Login = "ivanov"
             };
 
-            UserViewModel userViewModel = new UserViewModel(user);
+            mapper.Map<UserViewModel>(user);
+
+            var userViewModel = new UserViewModel(user);
 
             return userViewModel;
         }

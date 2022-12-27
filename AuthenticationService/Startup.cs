@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,12 @@ namespace AuthenticationService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ILogger, Logger>();
+
+            var mappingConfig = new MapperConfiguration(v =>
+                v.AddProfile(new MappingProfile())
+            );
+
+            services.AddSingleton(mappingConfig.CreateMapper());
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
