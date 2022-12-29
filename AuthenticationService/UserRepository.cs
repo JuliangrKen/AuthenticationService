@@ -18,6 +18,10 @@ namespace AuthenticationService
                     LastName = "Tester1",
                     Email = "Test1@mail.ru",
                     Password = "ru1",
+                    Role = new Role() {
+                        Id = 1,
+                        Name = "Администратор"
+                    }
                 },
                 new User()
                 {
@@ -27,6 +31,10 @@ namespace AuthenticationService
                     LastName = "Tester2",
                     Email = "Test2@mail.ru",
                     Password = "ru2",
+                    Role = new Role() {
+                        Id = 1,
+                        Name = "Пользователь"
+                    }
                 },
                 new User()
                 {
@@ -36,6 +44,10 @@ namespace AuthenticationService
                     LastName = "Tester3",
                     Email = "Test3@mail.ru",
                     Password = "ru3",
+                    Role = new Role() {
+                        Id = 1,
+                        Name = "Пользователь"
+                    }
                 },
             };
         }
