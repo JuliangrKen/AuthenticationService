@@ -43,7 +43,7 @@ namespace AuthenticationService.Controllers
             };
         }
 
-        [Authorize]
+        [Authorize(Roles = "Администратор")]
         [HttpGet]
         [Route("viewmodel")]
         public UserViewModel GetUserViewModel()
@@ -82,6 +82,7 @@ namespace AuthenticationService.Controllers
             var claims = new List<Claim>()
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Role.Name),
             };
 
             var claimsIdentity = new ClaimsIdentity
